@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 19 Juillet 2019 à 15:49
+-- Généré le :  Mer 24 Juillet 2019 à 09:55
 -- Version du serveur :  5.7.26-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.19-0ubuntu0.18.04.1
 
@@ -37,23 +37,66 @@ CREATE TABLE `attaques` (
 --
 
 INSERT INTO `attaques` (`id_attaque`, `nom`, `intensite`) VALUES
-(1, 'gust', NULL),
-(2, 'wing-attack', NULL),
-(3, 'whirlwind', NULL),
-(4, 'fly', NULL),
-(5, 'headbutt', NULL),
-(6, 'tackle', NULL),
-(7, 'body-slam', NULL),
-(8, 'take-down', NULL),
-(9, 'cut', NULL),
-(10, 'fury-attack', NULL),
-(11, 'slam', NULL),
-(12, 'wrap', NULL),
-(13, 'pay-day', NULL),
-(14, 'thunder-punch', NULL),
-(15, 'mega-kick', NULL),
-(16, 'swords-dance', NULL),
-(17, 'sand-attack', NULL);
+(1, 'gust', 40),
+(2, 'wing-attack', 60),
+(3, 'whirlwind', 70),
+(4, 'fly', 90),
+(5, 'headbutt', 70),
+(6, 'tackle', 50),
+(7, 'body-slam', 85),
+(8, 'take-down', 90),
+(9, 'cut', 50),
+(10, 'fury-attack', 15),
+(11, 'slam', 80),
+(12, 'wrap', 15),
+(13, 'pay-day', 40),
+(14, 'thunder-punch', 75),
+(15, 'mega-kick', 120),
+(16, 'swords-dance', 75),
+(17, 'sand-attack', 90);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `dresseur`
+--
+
+CREATE TABLE `dresseur` (
+  `id_dresseur` int(11) NOT NULL,
+  `nom` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `dresseur`
+--
+
+INSERT INTO `dresseur` (`id_dresseur`, `nom`) VALUES
+(1, 'Sacha'),
+(2, 'Barbara');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `dresseurpokemon`
+--
+
+CREATE TABLE `dresseurpokemon` (
+  `id` int(11) NOT NULL,
+  `fk_pokemon_id` int(11) DEFAULT NULL,
+  `fk_id_dresseur` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `dresseurpokemon`
+--
+
+INSERT INTO `dresseurpokemon` (`id`, `fk_pokemon_id`, `fk_id_dresseur`) VALUES
+(1, 1, 1),
+(2, 4, 1),
+(3, 10, 1),
+(4, 6, 2),
+(5, 8, 2),
+(6, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -66,27 +109,28 @@ CREATE TABLE `pokemon` (
   `nom` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `experience` int(11) DEFAULT NULL,
   `point_vie` int(11) DEFAULT NULL,
-  `defense` int(11) DEFAULT NULL
+  `defense` int(11) DEFAULT NULL,
+  `niveau` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `pokemon`
 --
 
-INSERT INTO `pokemon` (`id_pokemon`, `nom`, `experience`, `point_vie`, `defense`) VALUES
-(1, 'pidgey', 50, 40, NULL),
-(2, 'pidgeotto', 122, 63, NULL),
-(3, 'pidgeot', 216, 83, NULL),
-(4, 'rattata', 51, 30, NULL),
-(5, 'raticate', 145, 55, NULL),
-(6, 'spearow', 52, 40, NULL),
-(7, 'fearow', 155, 65, NULL),
-(8, 'ekans', 58, 35, NULL),
-(9, 'arbok', 157, 60, NULL),
-(10, 'pikachu', 112, 35, NULL),
-(11, 'raichu', 218, 60, NULL),
-(12, 'sandshrew', 60, 50, NULL),
-(13, 'sandslash', 158, 75, NULL);
+INSERT INTO `pokemon` (`id_pokemon`, `nom`, `experience`, `point_vie`, `defense`, `niveau`) VALUES
+(1, 'pidgey', 50, 40, 40, 1),
+(2, 'pidgeotto', 122, 63, 55, 1.5),
+(3, 'pidgeot', 216, 83, 75, 2),
+(4, 'rattata', 51, 30, 35, 1.25),
+(5, 'raticate', 145, 55, 60, 1.75),
+(6, 'spearow', 52, 40, 30, 1.5),
+(7, 'fearow', 155, 65, 65, 2),
+(8, 'ekans', 58, 35, 40, 1),
+(9, 'arbok', 157, 60, 69, 2),
+(10, 'pikachu', 112, 35, 40, 1.5),
+(11, 'raichu', 218, 60, 55, 2),
+(12, 'sandshrew', 60, 50, 85, 1.5),
+(13, 'sandslash', 158, 75, 110, 2.25);
 
 -- --------------------------------------------------------
 
@@ -169,6 +213,20 @@ ALTER TABLE `attaques`
   ADD PRIMARY KEY (`id_attaque`);
 
 --
+-- Index pour la table `dresseur`
+--
+ALTER TABLE `dresseur`
+  ADD PRIMARY KEY (`id_dresseur`);
+
+--
+-- Index pour la table `dresseurpokemon`
+--
+ALTER TABLE `dresseurpokemon`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_pokemon_id` (`fk_pokemon_id`),
+  ADD KEY `fk_id_dresseur` (`fk_id_dresseur`);
+
+--
 -- Index pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
@@ -190,12 +248,22 @@ ALTER TABLE `pokemonattaque`
 -- AUTO_INCREMENT pour la table `attaques`
 --
 ALTER TABLE `attaques`
-  MODIFY `id_attaque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_attaque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT pour la table `dresseur`
+--
+ALTER TABLE `dresseur`
+  MODIFY `id_dresseur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `dresseurpokemon`
+--
+ALTER TABLE `dresseurpokemon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id_pokemon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pokemon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `pokemonattaque`
 --
@@ -204,6 +272,13 @@ ALTER TABLE `pokemonattaque`
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `dresseurpokemon`
+--
+ALTER TABLE `dresseurpokemon`
+  ADD CONSTRAINT `fk_id_dresseur` FOREIGN KEY (`fk_id_dresseur`) REFERENCES `dresseur` (`id_dresseur`),
+  ADD CONSTRAINT `fk_pokemon_id` FOREIGN KEY (`fk_pokemon_id`) REFERENCES `pokemon` (`id_pokemon`);
 
 --
 -- Contraintes pour la table `pokemonattaque`
