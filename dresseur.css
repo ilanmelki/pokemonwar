@@ -1,0 +1,42 @@
+@font-face {
+ font-family: 'Permanent Marker';
+ src: url("Permanent_Marker/PermanentMarker-Regular.ttf");
+
+}
+.container{
+  padding-left: 30px;
+  padding-top: 5px;
+  background-image: url('images/bg.png');
+  background-position: cover;
+  background-repeat: no-repeat;
+  font-family: 'Permanent Marker';
+  font-size: 2em;
+}
+.choix{
+
+  display: inline-block;
+  text-align: center;
+  height: 400px;
+}
+#sacha{
+  margin-top: 70px;
+}
+.submit{
+  
+  background-color: white;
+  margin-left: 900px;
+    font-family: 'Permanent Marker', cursive;
+    border-radius: 35px;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 90px;
+    border: 0px solid black;
+
+}
+.envoyer{
+  margin-top: 68px;
+}
+.form{
+  display: flex;
+  justify-content: space-around;
+}
