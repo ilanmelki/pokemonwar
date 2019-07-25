@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 24 Juillet 2019 à 09:55
--- Version du serveur :  5.7.26-0ubuntu0.18.04.1
+-- Généré le :  Jeu 25 Juillet 2019 à 15:47
+-- Version du serveur :  5.7.27-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.19-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -63,16 +63,17 @@ INSERT INTO `attaques` (`id_attaque`, `nom`, `intensite`) VALUES
 
 CREATE TABLE `dresseur` (
   `id_dresseur` int(11) NOT NULL,
-  `nom` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `nom` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url_image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `dresseur`
 --
 
-INSERT INTO `dresseur` (`id_dresseur`, `nom`) VALUES
-(1, 'Sacha'),
-(2, 'Barbara');
+INSERT INTO `dresseur` (`id_dresseur`, `nom`, `url_image`) VALUES
+(1, 'Sacha', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/images/sacha.png'),
+(2, 'Barbara', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/images/barbara.png');
 
 -- --------------------------------------------------------
 
@@ -83,20 +84,21 @@ INSERT INTO `dresseur` (`id_dresseur`, `nom`) VALUES
 CREATE TABLE `dresseurpokemon` (
   `id` int(11) NOT NULL,
   `fk_pokemon_id` int(11) DEFAULT NULL,
-  `fk_id_dresseur` int(11) DEFAULT NULL
+  `fk_id_dresseur` int(11) DEFAULT NULL,
+  `exp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `dresseurpokemon`
 --
 
-INSERT INTO `dresseurpokemon` (`id`, `fk_pokemon_id`, `fk_id_dresseur`) VALUES
-(1, 1, 1),
-(2, 4, 1),
-(3, 10, 1),
-(4, 6, 2),
-(5, 8, 2),
-(6, 12, 2);
+INSERT INTO `dresseurpokemon` (`id`, `fk_pokemon_id`, `fk_id_dresseur`, `exp`) VALUES
+(1, 1, 1, NULL),
+(2, 4, 1, NULL),
+(3, 10, 1, NULL),
+(4, 6, 2, NULL),
+(5, 8, 2, NULL),
+(6, 12, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -110,27 +112,29 @@ CREATE TABLE `pokemon` (
   `experience` int(11) DEFAULT NULL,
   `point_vie` int(11) DEFAULT NULL,
   `defense` int(11) DEFAULT NULL,
-  `niveau` float DEFAULT NULL
+  `niveau` float DEFAULT NULL,
+  `image_devant` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_derriere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `pokemon`
 --
 
-INSERT INTO `pokemon` (`id_pokemon`, `nom`, `experience`, `point_vie`, `defense`, `niveau`) VALUES
-(1, 'pidgey', 50, 40, 40, 1),
-(2, 'pidgeotto', 122, 63, 55, 1.5),
-(3, 'pidgeot', 216, 83, 75, 2),
-(4, 'rattata', 51, 30, 35, 1.25),
-(5, 'raticate', 145, 55, 60, 1.75),
-(6, 'spearow', 52, 40, 30, 1.5),
-(7, 'fearow', 155, 65, 65, 2),
-(8, 'ekans', 58, 35, 40, 1),
-(9, 'arbok', 157, 60, 69, 2),
-(10, 'pikachu', 112, 35, 40, 1.5),
-(11, 'raichu', 218, 60, 55, 2),
-(12, 'sandshrew', 60, 50, 85, 1.5),
-(13, 'sandslash', 158, 75, 110, 2.25);
+INSERT INTO `pokemon` (`id_pokemon`, `nom`, `experience`, `point_vie`, `defense`, `niveau`, `image_devant`, `image_derriere`) VALUES
+(1, 'pidgey', 50, 40, 40, 1, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/pidgeyface.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/pidgey.gif'),
+(2, 'pidgeotto', 122, 63, 55, 1.5, NULL, NULL),
+(3, 'pidgeot', 216, 83, 75, 2, NULL, NULL),
+(4, 'rattata', 51, 30, 35, 1.25, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/rattataface.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/rattata.gif'),
+(5, 'raticate', 145, 55, 60, 1.75, NULL, NULL),
+(6, 'spearow', 52, 40, 30, 1.5, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/spearowface.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/spearow.gif'),
+(7, 'fearow', 155, 65, 65, 2, NULL, NULL),
+(8, 'ekans', 58, 35, 40, 1, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/ekans.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/ekansback.gif'),
+(9, 'arbok', 157, 60, 69, 2, NULL, NULL),
+(10, 'pikachu', 112, 35, 40, 1.5, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/pikachuface.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/pikachu.gif'),
+(11, 'raichu', 218, 60, 55, 2, NULL, NULL),
+(12, 'sandshrew', 60, 50, 85, 1.5, 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/sandshrewface.gif', 'https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/Pokegif/sandshrew.gif'),
+(13, 'sandslash', 158, 75, 110, 2.25, NULL, NULL);
 
 -- --------------------------------------------------------
 
