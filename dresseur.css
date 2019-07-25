@@ -12,6 +12,9 @@
   font-family: 'Permanent Marker';
   font-size: 2em;
 }
+.none{
+  display: none;
+}
 .choix{
 
   display: inline-block;
@@ -22,7 +25,7 @@
   margin-top: 70px;
 }
 .submit{
-  
+
   background-color: white;
   margin-left: 900px;
     font-family: 'Permanent Marker', cursive;

@@ -12,8 +12,8 @@
     <form method="post" action="choixpokemon.php" >
       <p>choisissez un dresseur :</p>
       <div class="form">
-        <div class="choix" id="sacha"><label>SACHA</label><input type="radio" name= "dresseur" value="sacha" /> <img src="images/sacha.png" alt="sacha"/></div>
-        <div class="choix"><label>BARBARA</label><input type="radio" name= "dresseur" value="barbara"/> <img src="images/barbara.png" alt="barbara"/></div>
+        <div class="choix" id="sacha"><label>SACHA</label><input type="radio" name= "dresseur" value="sacha" /> <img src="https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/images/sacha.png" alt="sacha"/></div>
+        <div class="choix"><label>BARBARA</label><input type="radio" name= "dresseur" value="barbara"/> <img src="https://raw.githubusercontent.com/ilanmelki/pokemonwar/developpement/images/barbara.png" alt="barbara"/></div>
       </div>
       <input type="submit" value="valider" class="submit"/>
 
