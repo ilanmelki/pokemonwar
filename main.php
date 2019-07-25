@@ -14,14 +14,7 @@ if(isset($_POST['pokemon'])){
   $req = $bdd->prepare('SELECT * FROM pokemon WHERE nom=?');
   $req->execute(array($_POST['pokemon']));
   $pokemonline=$req->fetch();
-  /*echo 'les caracteristiques du pokemon: '. '<br>';
-  echo 'nom :'. $pokemonline['nom'].'<br>' ;
-  echo 'vie :'.$pokemonline['point_vie'].'<br>' ;
-  echo 'defense :'.$pokemonline['defense'].'<br>' ;
-  echo 'experience :'.$pokemonline['experience'].'<br>' ;
-  echo 'niveau :'.$pokemonline['niveau'].'<br>' ;
-  echo '<img src=\''.$pokemonline['image_devant'].'\'/><br>';*/
-  //echo '<img src=\''.$pokemonline['image_derriere'].'\'/>';
+
 }
 //recuperer les attaques du pokemons
 if(isset($pokemonline['id_pokemon'])){
@@ -38,36 +31,25 @@ if(isset($pokemonline['id_pokemon'])){
     //table qui stocke les noms des attaque des pokemon.
     $attacks[]=$attaquename['nom'];
 }
-//var_dump($attacks);
 }
 //requete dresseur
 $reqdresseur = $bdd->prepare('SELECT * FROM dresseur WHERE nom=?');
 $reqdresseur->execute(array($_POST['dresseur']));
 $datadresseur=$reqdresseur->fetch();
-//echo '<img src=\''.$datadresseur[sacha'url_image'].'\'/>';
-//echo $datadresseur['nom'];
-
-
 if($_POST['dresseur']=="sacha"){
   $reqopponent = $bdd->query('SELECT * FROM dresseur WHERE nom="Barbara"');
-
   $dataopponent=$reqopponent->fetch();
-  //echo '<img src=\''.$dataopponecho "test";ent['url_image'].'\'/>';
   $pokopp = array(6, 8, 12);
   $rand_keys = array_rand($pokopp, 1);
   $id_pokopp=$pokopp[$rand_keys];
   $reqpokopp=$bdd->prepare('SELECT * FROM pokemon WHERE id_pokemon=?');
   $reqpokopp->execute(array($id_pokopp));
   $poklineopp=$reqpokopp->fetch();
-  //echo '<img src=\''.$poklineopp['image_devant'].'\'/><br>';
-
   //gerer les attaques
-
   if(isset($poklineopp['id_pokemon'])){
     //requete recuperer les id des attaque de ce pokemon auto
     $reqattackopp = $bdd->prepare('SELECT fk_id_attaque FROM pokemonattaque WHERE fk_id_pokemon=?');
     $reqattackopp->execute(array($poklineopp['id_pokemon']));
-
     //un tableau pour recuperer les nom des 4 attaques du pokemon auto
     $attacksopp=[];
     while ($pokemonattackopp = $reqattackopp->fetch()){
@@ -77,25 +59,19 @@ if($_POST['dresseur']=="sacha"){
       $attaquenameopp = $reqnameopp->fetch();
       //table qui stocke les noms des attaque des pokemon adverse.
       $attacksopp[]=$attaquenameopp['nom'];
-
 }
 }
 }
 else if($_POST['dresseur']=="barbara"){
   $reqopponent = $bdd->query('SELECT * FROM dresseur WHERE nom="Sacha"');
   $dataopponent=$reqopponent->fetch();
-
-  //echo '<img src=\''.$dataopponent['url_image'].'\'/>';
   $pokopp = array(1, 4, 10);
   $rand_keys = array_rand($pokopp, 1);
   $id_pokopp=$pokopp[$rand_keys];
   $reqpokopp=$bdd->prepare('SELECT * FROM pokemon WHERE id_pokemon=?');
   $reqpokopp->execute(array($id_pokopp));
   $poklineopp=$reqpokopp->fetch();
-  //echo '<img src=\''.$poklineopp['image_devant'].'\'/><br>';
-
   //gerer les attaques
-
   if(isset($poklineopp['id_pokemon'])){
     //requete recuperer les id des attaque de ce pokemon auto
     $reqattackopp = $bdd->prepare('SELECT fk_id_attaque FROM pokemonattaque WHERE fk_id_pokemon=?');
@@ -109,14 +85,12 @@ else if($_POST['dresseur']=="barbara"){
       $attaquenameopp = $reqnameopp->fetch();
       //table qui stocke les nomsecho "test"; des attaque des pokemon adverse.
       $attacksopp[]=$attaquenameopp['nom'];
-
-
 }
 }
 }
-//print_r($attacksopp);
 $pokemonselected= new Pokemon($pokemonline['id_pokemon'], $pokemonline['nom'], $pokemonline['defense'], $attacks, $pokemonline['niveau'], $pokemonline['point_vie'], $pokemonline['image_devant'], $pokemonline['image_derriere']);
 $pokemonopponent= new Pokemon($poklineopp['id_pokemon'], $poklineopp['nom'], $poklineopp['defense'], $attacksopp, $poklineopp['niveau'], $poklineopp['point_vie'], $poklineopp['image_devant'], $poklineopp['image_derriere']);;
 echo $pokemonselected->getBackimg();
 echo $pokemonopponent->getFrontimg();
+header('Location: arene.php');
  ?>
