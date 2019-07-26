@@ -11,21 +11,22 @@ class Attaque
   private $point_vie;
   private $experience;
   private $niveau;
+  private $degats;
 
 
-  function __construct( $intensite, $defense,$experience,$niveau)
+  function __construct( $Intensite, $Defense,$Experience,$Niveau)
 
   {
 
- $this-> $intesite;
- $this->$experience;
- $this->$defense;
- $this->$niveau;
+ $this-> intesite=$Intensite;
+ $this->experience=$Experience;
+ $this->defense=$Defense;
+ $this->niveau=$Niveau;
 
 }
   public function degat (){
 
-  $degat = (($niveau *0.4+2)*$intensite*$puissance) /($defense*50 )+2;
+  $degat = (($this->niveau *0.4+2)*$this->intensite*$this->puissance) /($this->defense*50 )+2;
 
   return ceil ($degat);
   }
@@ -34,7 +35,7 @@ class Attaque
           $this->degats += degat();
 
           //  les dégats superieur ou egal au point de vie => le personnage est tué
-          if ($this->degats >= $point_vie) {
+          if ($this->degats >= $this->point_vie) {
               return 'pokemon vaincu';
           }
 
