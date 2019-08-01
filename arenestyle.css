@@ -1,0 +1,135 @@
+@font-face {
+ font-family: 'Permanent Marker';
+ src: url("Permanent_Marker/PermanentMarker-Regular.ttf");
+
+}
+body
+{
+background-image:linear-gradient(yellow,white);
+font-family: 'Permanent Marker';
+
+
+}
+.pokewar
+{
+  text-align: center;
+  margin-top: -200px;
+  margin-left: 740px;
+  z-index: 11;
+  position: absolute;
+}
+.headtitle.img
+{ text-align: center;
+  height: 20px;
+  margin-top: 50px;
+  margin-left: 250px;
+
+
+}
+.pokeicon1
+{
+  margin-top: 100px;
+  z-index: 6;
+  position: absolute;
+  margin-left: -250px;
+
+}
+
+
+
+.pokeicon2
+{
+  margin-left: 1320px;
+  margin-top: 100px;
+  z-index: 5;
+  position: absolute;
+
+}
+.arene
+{
+
+
+  text-align: center;
+  margin-top: 100px;
+  z-index: 1;
+  position: absolute;
+  margin-left: 250px;
+}
+#attack1{
+    width: 400px;
+  margin-left: 160px;
+  margin-top: -350px;
+}
+#attack2{
+  margin-left:-400px;
+  margin-top: -0px;
+
+}
+#pokemonback
+{
+  position: absolute;
+  z-index: 5;
+  margin-top: 450px;
+  margin-left: 400px;
+}
+ #pokemonface
+ {
+   position: absolute;
+   z-index: 5;
+   margin-top: 255px;
+   margin-left: 810px;
+ }
+
+.cadreattack
+{
+  margin-top: 95px;
+  z-index: 3;
+  position: absolute;
+  margin-left: 250px;
+}
+
+.container
+{
+  text-align: center;
+  margin-left: 265px;
+  margin-top: 0px;
+}
+
+.btn1
+{
+  padding:6px 0 6px 0;
+  font-family: 'Permanent Marker' , cursive;
+	font:bold 13px Arial;
+	background:#f5f5f5;
+	color:#555;
+	border-radius:2px;
+	width:150px;
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+  margin-top: -150px;
+
+}
+.none{
+  display: none;
+}
+.exit{
+  padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#f5f5f5;
+	color:#555;
+	border-radius:2px;
+	width:0px;
+
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+  margin-left: 50px;
+
+}
+.vierestante{
+
+}
+
+label {
+    padding-right: 10px;
+    font-size: 1rem;
+}

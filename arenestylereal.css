@@ -1,0 +1,137 @@
+
+body
+{
+background-image:linear-gradient(yellow,white);
+height:300px;
+width:400px;
+
+
+}
+
+
+.pokewar
+{
+  text-align: center;
+  margin-top: -170px;
+  margin-left: 740px;
+  z-index: 11;
+  position: absolute;
+}
+
+
+
+
+.pokeicon1
+{
+  margin-top: -250px;
+  z-index: 6;
+  position: absolute;
+
+}
+
+
+
+.pokeicon2
+{
+  margin-left: 1520px;
+  margin-top: -250px;
+  z-index: 5;
+  position: absolute;
+
+}
+.arene
+{
+
+  margin-top: -250px;
+  z-index: 7;
+  position: absolute;
+
+  margin-left: 480px;
+}
+
+
+#pokemonback
+{
+margin-top: 200px;
+z-index: 9;
+position: absolute;
+margin-top: 52px;
+margin-left: 300px;
+
+}
+
+#pokemonface
+{
+  margin-left: 200px;
+  z-index: 8;
+  position: absolute;
+  margin-top: -60px;
+  margin-left: 400px;
+}
+
+.cadreattack
+{
+  margin-top: -150px;
+  z-index: 10;
+  position: absolute;
+}
+
+.container
+{
+  margin-top: 500px;
+}
+
+.pixelart-to-css
+{
+
+}
+
+.cadreattack
+{
+  margin-top: -245px;
+  margin-left: -220px;
+}
+
+.pixelart-to-css {
+  box-shadow: ;
+  height: 10px;
+  width: 10px;
+}
+
+.btn2
+{
+	border-radius:12px 0 12px 0;
+	background: #478bf9;
+	border:none;
+	color:#fff;
+	font:bold 12px Verdana;
+	padding:6px 0 6px 0;
+}
+
+
+.btn3
+{
+	border-radius:12px 0 12px 0;
+	background: #478bf9;
+	border:none;
+	color:#fff;
+	font:bold 12px Verdana;
+	padding:6px 0 6px 0;
+}
+
+
+.btn4
+{
+	border-radius:12px 0 12px 0;
+	background: #478bf9;
+	border:none;
+	color:#fff;
+	font:bold 12px Verdana;
+	padding:6px 0 6px 0;
+}
+
+#btn1.value
+{
+
+
+}
