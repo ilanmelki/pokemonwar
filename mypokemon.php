@@ -43,11 +43,11 @@ class Pokemon
     return $this->hp;
   }
   public function getFrontimg(){
-    return $this->frontimg='<div id="pokemonface"><img src=\''.$this->frontimg.'\'/>';
+    return $this->frontimg='<img src=\''.$this->frontimg.'\'/>';
 
   }
   public function getBackimg(){
-    return $this->backimg='<div id="pokemonback"><img src=\''.$this->backimg.'\'/>';
+    return $this->backimg='<img src=\''.$this->backimg.'\'/>';
 
   }
   public function setId($Id){
