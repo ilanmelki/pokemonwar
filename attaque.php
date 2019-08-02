@@ -7,10 +7,12 @@ class Attaque
 {
 
 
+
   private $intensite;
   private $defense;
   private $experience;
   private $niveau;
+
 
 
 
@@ -24,7 +26,11 @@ class Attaque
  $this->niveau=$Niveau;
 
 }
-  public function degat(){
+ 
+
+}
+  public function degat (){ // fonction qui permet de calculer le nombre de degat subit par le pokemon attaqué
+
 
   $degat = (($this->niveau *0.4+2)*$this->intensite*$this->experience) /($this->defense*50 )+2;
 
